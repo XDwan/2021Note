@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\usepackage{lmodern}
+\usepackage[UTF8]{ctex}% 中文语言包
+\usepackage{amsmath}
+\usepackage{booktabs}% 引入三线表宏包
+\usepackage{indentfirst}% 使用indentfirst宏包
+\setlength{\parindent}{2em}% 设置首行缩进距离
+\usepackage{graphicx}% 插入图片宏包
+\usepackage{float}% 图片错位解决
+
+\title{离散数学}
+
+\author{XDwan}
+
+
+\begin{document}
+
+    
+\maketitle
+
+\renewcommand{\contentsname}{目录}%将content转为目录
+\tableofcontents
+\newpage
+
+\section{绪论}
+
+研究离散对象之间的关系和结构的一门学科
+
+具有逻辑性、抽象性，强盗概念、方法和应用
+
+评分标准：期末85\% + 平时15\%
+
+\textbf{内容}：
+
+\begin{enumerate}
+    \item 数理逻辑
+    \item 集合
+    \item 关系
+    \item 函数
+    \item 无限集合
+    \item 代数系统（笔记内容）
+    \item 图论
+\end{enumerate}
+
+\textbf{特点}：
+
+\begin{enumerate}
+    \item 不关注具体问题
+    \item 假设遵循某些规律
+    \item 讨论和研究应有的性质
+    \item 结论具有普遍性
+\end{enumerate}
+
+
+\newpage
+
+\section{代数结构}
+
+\subsection{定义}
+
+有一个非空集合$A$，具有若干个定义在$A$上的运算$f_1.f_2,f_3,\dots ,f_n$,这些东西组成一个代数系统，简称\textbf{代数}，记为$<A,f_1,f_2,\dots,f_n>$。
+
+\subsection{组成}
+
+载体：非空集合$A$
+
+运算：$f_1,f_2,\dots,f_n$
+
+代数常元：运算相关的特殊元素，如整数集中的0,1
+
+
+\subsection{代数运算}
+
+$A,B$是非空集合,$f$是从$A^n$到$B$的一个映射，则$f$为从从$A^n$到$B$的一个\textbf{$n$元代数运算}，简称\textbf{运算}，$n$为代数运算的\textbf{阶}
+
+\textbf{封闭性：} $f$为从从$A^n$到$B$的一个$n$元代数运算，若$B \subseteq A $，则称该运算在集合$A$上封闭
+
+特别的：
+
+$f$为从从$A$到$B$的一个映射，则称$f$是一个在$A$上封闭的一元运算
+
+$f$为从从$A^2$到$B$的一个映射，则称$f$是一个在$A$上封闭的二元运算
+
+
+\subsection{定律}
+
+\subsubsection{交换律}
+
+假设$*$是一个定义在$A$上的二元运算，如果$\forall x,y \in A$ 都有$x*y = y*x$，则称该二元运算可交换
+
+\subsubsection{结合律}
+
+假设$*$是一个定义在$A$上的二元运算，如果$\forall x,y,z \in A$ 都有$x*(y*z) = (x*y)*z$，则称该二元运算可结合
+
+\subsubsection{分配律}
+
+
+
+\end{document}
