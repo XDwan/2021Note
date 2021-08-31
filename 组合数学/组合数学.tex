@@ -1,0 +1,122 @@
+\documentclass{article}
+
+\usepackage{lmodern}
+\usepackage[UTF8]{ctex}% 中文语言包
+\usepackage{amsmath}
+\usepackage{booktabs}% 引入三线表宏包
+\usepackage{indentfirst}% 使用indentfirst宏包
+\setlength{\parindent}{2em}% 设置首行缩进距离
+\usepackage{graphicx}% 插入图片宏包
+\usepackage{float}% 图片错位解决
+
+\title{组合数学}
+
+\author{XDwan}
+
+\begin{document}
+    
+\renewcommand{\contentsname}{目录}%将content转为目录
+\tableofcontents
+\newpage
+
+\section{绪论}
+
+\subsection{三个问题}
+
+\begin{enumerate}
+    \item \textbf{存在性问题} 解是否存在
+    \item \textbf{计数问题} 有多少种解
+    \item \textbf{构造问题} 解应该怎么构造
+\end{enumerate}
+
+\subsection{求解方法}
+
+\begin{enumerate}
+    \item \textbf{数学归纳法}
+    \item \textbf{迭代法}
+    \item \textbf{一一对应技术} 
+    
+    利用两个事物间一一对应的关系，将较复杂的组合计数问题A转化成容易计数的B
+
+    \item \textbf{殊途同归方法} 
+    
+    从不同角度讨论计数问题，建立组合等式
+
+    \item \textbf{数论方法} 
+    
+    利用整数的奇偶性、整除性等数论性质进行分析推理
+
+
+\end{enumerate}
+
+\subsection{两个法则}
+
+\begin{enumerate}
+    \item \textbf{加法法则} 
+    
+    若完成一件事有两个方案，第一个方案有m种方法，第二种有n种，只要选择任何方案中某一种方法就能完成，并且方法两两互不相同，则完成事情共有m+n个方法
+    
+    \item \textbf{乘法法则} 
+    
+    若完成一件事有两个步骤，第一步有m个方法，第二步有n种方法，则完成事情共有 m $\cdot$ n 种方法
+
+\end{enumerate}
+
+\subsection{排列与组合}
+
+\subsubsection{相异元素不允许重复的排列数和组合数}
+
+从n个相异元素种不重复的取r个元素的排列数和组合数分布为：
+
+\begin{equation}
+    P^r_n=P(n,r) = n(n-1)\dots(n-r+1) = \frac{n!}{(n-r)!}
+\end{equation}
+
+\begin{equation}
+    C^r_n = C(n,r) = \begin{pmatrix}
+        n \\ r
+    \end{pmatrix} = \frac{P^r_n}{r!} = \frac{n!}{(n-r)!r!}
+\end{equation}
+
+相异元素不允许重复的排列问题也可以描述为：将r个有区别的球放入n个不同的盒子，每个盒子不超过一个，则总的放法数为$P(n,r)$。同样，若球不加区别，则有$C(n,r)$种放法。这是排列与组合的数学模型——\textbf{分配问题}，也称\textbf{分配模型}
+
+
+\subsubsection{相异元素允许重复的排列}
+
+从n个不同元素种允许重复的选r个元素的排列，简称\textbf{r元重复排列}。其排列个数记为$RP(\infty,r)$。其对应的分配模型为将r个有区别的球放入n个不同的盒子，每个盒子的球数不加限制而且同盒的球不分次序。则排列数为：
+\begin{equation}
+    RP(\infty,r) = n^r
+\end{equation}
+
+从集合的角度理解，问题也可以描述为：
+
+设集合$S= \{\infty \cdot e_1,\infty \cdot e_2,\dots,\infty \cdot e_n \}$，即$S$种共含$n$类元素，每类元素有无穷多个，从$S$中取$r$个元素的排列数即为$RP(\infty,r)$
+
+\subsubsection{不尽相异元素排列}
+
+设$S=\{n_1\cdot e_1,n_2\cdot e_2,\dots,n_t\cdot e_t\}$，即元素$e_i$有$n_i$个$(i=1,2,\dots,t)$，且$n_1+n_2+\dots+n_t = n$，从$S$中任取$r$个元素，求其排列数$RP(n,r)$
+
+本问题的数学模型事将$r$个有区别的球放入$t$个不同的盒子，而每个盒子的容量事有限的，其中第$i$个盒子最多只能放入$n_i$个球，求分配方案数。
+
+相对于前两种情况，这种事有限重复的排列问题，即相异元素不重复的排列强调事不重复，即盒子的容量为1；允许重复的排列实际上是盒子容量无限。而有限重复是盒子容量有限。
+
+如下是几个特例：
+
+\begin{enumerate}
+    \item r=1 时，$RP(n,1)=P^1_t = t$
+    \item r = n 时，n个元素的全排列数为
+
+    \begin{equation}
+        RP(n,n) = \frac{n!}{n_1!n-2!\dots n_3!}
+    \end{equation}
+
+    \item t = 2 时, 2个元素的全排列数为
+    
+    \begin{equation}
+        RP(n,n) = \frac{n!}{n_1!n_2!} = \begin{pmatrix}
+            n \\ n_1
+        \end{pmatrix}
+    \end{equation}
+\end{enumerate}
+
+\end{document}
