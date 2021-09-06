@@ -1,0 +1,1 @@
+"E:\AppData\微信web开发者工具\cli.bat" cloud functions deploy --e txcloud-9gqkilje7bcee74b --n quickstartFunctions --r --project "F:\2021Note\微信小程序" --report_start --report
