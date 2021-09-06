@@ -1,0 +1,43 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "g++.exe build active file",
+      "command": "F:\\mingw64\\mingw64\\bin\\g++.exe",
+      "args": [
+        "-g",
+        "-std=c++17",
+        "\"${file}\"",
+        "-o",
+        "\"${fileDirname}\\${fileBasenameNoExtension}.exe\""
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    }
+  ],
+  "options": {
+    "shell": {
+      "executable": "${env:SystemRoot}\\System32\\cmd.exe",
+      "args": [
+        "/c"
+      ]
+    },
+    "env": {
+      "Path": "F:\\mingw64\\mingw64\\bin:${env:Path}"
+    }
+  }
+}
