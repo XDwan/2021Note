@@ -110,6 +110,8 @@
         RP(n,n) = \frac{n!}{n_1!n-2!\dots n_3!}
     \end{equation}
 
+    先视为n个不同元素的排列，共有n！种。但每个排列实际重复统计了$n_1 !n_2!\dots n_t!$次。因为当元素不同时，同类元素交换位置，对应不同的排列。而当同类元素相同时，针对每个确定的排列，同类元素互相交换位置，该排列不变。
+
     \item t = 2 时, 2个元素的全排列数为
     
     \begin{equation}
@@ -118,5 +120,74 @@
         \end{pmatrix}
     \end{equation}
 \end{enumerate}
+
+\subsubsection{相异元素不允许重复的圆排列}
+
+\begin{enumerate}
+    \item \textbf{问题一：}n个有标号的珠子排成一个圆圈，共有几种不同的排法
+    
+    \begin{enumerate}
+        \item 方法一
+
+        n个相异元素任意排成一行（线排列），共有n！种排法，再首尾相接，每当元素转动时，相当于n个不同的线排列，故排列数为：
+        \begin{equation}
+            CP(n,n) = \frac{P(n,n)}{n} = (n-1)!
+        \end{equation}
+
+        \item 方法二
+        
+        先取出某一元素k，放于圆上某确定位置，再令余下的n-1个元素作成一个线排列，首位置于k的两侧构成一个圆排列同样可以得到：
+        $$
+        CP(n,n) = \frac{P(n,n)}{n} = (n-1)!
+        $$
+    \end{enumerate}
+
+    \item \textbf{问题二：}从n个相异元素中不重复地去r个围成圆排列，求不同排列总数CP(n,r)
+    
+    即为从n个相异的元素中取出r个线排列，且由于对称过来仍然相同，则共有：
+
+    \begin{equation}
+        \frac{P(n,r)}{2r} = \frac{n!}{2r(n-r)!}
+    \end{equation}
+
+\end{enumerate}
+
+
+\subsubsection{相异元素允许重复的组合}
+
+设$S=\{ \infty \cdot e_1,\infty \cdot e_2,\dots,\infty \cdot e_n\}$，从S中允许重复地取r个元素构成组合，称为r可重组合，组合数记为$RC(\infty,r)$。
+
+将S的n个不同元素分别用1,2,...,n表示，则取出r个元素从小到大设为$a_1,a_2,\dots,a_r$，则$a_i$满足：
+$$
+1 \leq a_1 \leq a_2 \leq \dots \leq a_r\leq n
+$$
+
+令$b_i = a_i +(i-1),i=1,2,\dots,e$，则
+$$
+1 \leq b_1 < b_2 < \dots < b_r \leq n+(r-1)
+$$
+
+对应一个从n+r-1个相异元素中不允许重复地取r个元素的组合。从而两个集合一一对应：
+$$
+RC(\infty,r) = C(n+r-1,r) = \frac{(n+r-1)!}{r!(n-1)!}
+$$
+
+重复组合的模型是将r个无区别的球放入n个不同的盒子，每个盒子的球数不变
+
+\subsubsection{不尽相异的元素组合}
+
+设$S=\{n_1\cdot e_1,n_2\cdot e_2,\dots,n_t\cdot e_t\}$，且$n_1+n_2+\dots+n_t = n$，从S中任取r个，求其组合数RC(n,r)
+
+设多项式
+
+$$
+\prod^t_{i=1} \sum^{n_i}_{j=0} x^j =  \prod^t_{i=1}(1+x+x^2+\dots+x^{n_i}) = \sum^n_{r=0}a_rx^r
+$$
+
+则RC(n,r)就是多项式中$x^r$的系数，即
+
+$$
+RC(n,r) = a_r
+$$
 
 \end{document}

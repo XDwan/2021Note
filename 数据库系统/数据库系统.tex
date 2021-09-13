@@ -318,9 +318,168 @@
     \end{enumerate}
 
     \item 网状模型
+
+    记录类型之间的联系用连线表达，数据结构是网，联系必须标注名称
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=10cm]{img/1.2-11.png}
+        \caption{网状模型的多对多联系}
+    \end{figure}
+
+    数据操纵和完整性约束
+    \begin{enumerate}
+        \item 操纵同层次模型
+        \item 支持码（对应实体的标识符）
+        \item 对于每条边，父结点和子结点有一对多的联系
+        \item 支持父结点与子结点间的某些约束
+    \end{enumerate}
+
+    存储结构使用链式存储
+
+    优点:
+    \begin{enumerate}
+        \item 更直观的描述现实世界
+        \item 具有良好的性能，存取效率较高
+    \end{enumerate}
+
+    缺点:
+    \begin{enumerate}
+        \item 结构比较复杂，随着应用环境扩大，数据库的结构解越来越复杂
+        \item 网状模型的DDL、DML语言复杂，用户不容易使用
+    \end{enumerate}
+
     \item 关系模型
+
+    数据操纵与完整性约束
+    \begin{enumerate}
+        \item 查询、插入、删除、修改。数据操作是集合操作，操作对象和操作结果都是关系，即若干元组的集合
+        \item 实体完整性、参照完整性、用户定义完整性
+    \end{enumerate}
+
+    存储结构：实体和联系都是用关系来表示，存储在数据文件中
+    \begin{enumerate}
+        \item 实体型直接用关系表示
+        \item 一对一关系：可隐含在实体对应的关系中
+        \item 一对多关系：可隐含在实体对应的关系中
+        \item 多对多关系：直接用关系表示
+    \end{enumerate}
+
+    优点
+    \begin{enumerate}
+        \item 建立在严格的数据概念基础上
+        \item 概念单一，数据结构简单、清晰，用户易懂易用（实体和各类联系都用关系表示，对数据的检索也是关系）
+        \item 关系的存取路径对用户透明（具有更高的数据独立性，更好的安全保密性。简化了程序员的工作）
+    \end{enumerate}
+
+    缺点
+    \begin{enumerate}
+        \item 存取路径对用户透明导致查询效率不如其他逻辑模型。提高性能必须对用户的查询请求进行优化，增加了开放数据库管理系统的难度。
+    \end{enumerate}
     \item 面向对象模型
     \item 对象关系模型
 \end{enumerate}
 
+\subsection{数据库系统结构}
+
+划分方法：
+从用户的角度看
+\begin{enumerate}
+    \item 集中式结构
+    \item 分布式结构
+    \item 客户/服务器结构
+    \item 浏览器/应用服务器/数据库服务器多层结构
+\end{enumerate}
+
+从数据库管理系统角度看：\textbf{三级模式结构}
+
+数据库系统模式
+
+\begin{enumerate}
+    \item 型（Type）：对某一类数据的结构和属性说明
+    \item 值（Value）：型的某一个具体值
+\end{enumerate}
+
+模式：（Schema）
+\begin{enumerate}
+    \item 数据库逻辑结构和特征的描述
+    \item 型的描述
+    \item 反映数据的结构及其联系
+    \item 模式时相对稳定的
+\end{enumerate}
+
+模式的一个实例（Instance）
+\begin{enumerate}
+    \item 模式的一个具体值
+    \item 反映数据库某一时刻的状态
+    \item 同一个模式有很多实例
+    \item 实例随数据库中的数据的更新而变动
+\end{enumerate}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm]{img/1.3-1.png}
+    \caption{数据库的三级模式结构}
+\end{figure}
+
+模式：（Schema 也称逻辑模式）
+
+\begin{enumerate}
+    \item 数据库中全体数据的逻辑结构和特征描述
+    \item 所有用户的公共数据视图，综合所有用户的需求
+\end{enumerate}
+
+一个数据库只有一个模式
+
+模式的定位：是数据库模式结构的中间层
+\begin{enumerate}
+    \item 与数据库的物理存储细节和硬件关系无关
+    \item 与具体的应用程序、开放工具及高级程序设计语言无关
+\end{enumerate}
+
+模式的定义
+\begin{enumerate}
+    \item 数据的逻辑结构（数据项的名字、类型、取指范围等）
+    \item 数据之间的联系
+    \item 数据有关的安全性、完整性要求
+\end{enumerate}
+
+外模式（External Schema，也称子模式或用户模式）
+\begin{enumerate}
+    \item 数据库用户使用局部数据的逻辑结构和特征描述
+    \item 数据库用户的数据视图，是与某一应用有关的数据逻辑表示
+\end{enumerate}
+
+外模式的地位：介于模式与应用之间
+
+模式与外模式的关系：一对多
+\begin{enumerate}
+    \item 外模式通常是模式的子集
+    \item 一个数据库可以有多个外模式。反映了不同用户的应用需求、看待数据的方式。对外数据保密的要求
+    \item 对模式中同一数据，在外模式中的结构、类型、长度、保密等级都可以不同
+    \item 外模式中可能有更多的信息
+\end{enumerate}
+
+外模式与应用的关系：一对多
+\begin{enumerate}
+    \item 同一外模式可以为某一用户的多个应用系统使用
+    \item 一个应用程序只能使用一个外模式
+\end{enumerate}
+
+外模式的用途：保证数据库安全的一个有力措施：每个用户只能看见和访问所对应的外模式中的数据
+
+内模式（Internal Schema也称存储模式）
+
+\begin{enumerate}
+    \item 数据物理结构和存储方式的描述
+    \item 是数据在数据库内部的表示方式，包括
+    \begin{enumerate}
+        \item 记录的存储方式（顺序存储、按照B树结构存储、按Hash方法存储）
+        \item 索引的组织方式
+        \item 数据是否压缩
+        \item 数据是否加密
+        \item 关于数据存储记录结构的规定（定长/变长结构等）
+    \end{enumerate}
+\end{enumerate}
+一个数据只有一个内模式
 \end{document}
